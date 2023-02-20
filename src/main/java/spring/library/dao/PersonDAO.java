@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
-import spring.library.controllers.Person;
+import spring.library.models.Person;
 
 import java.util.List;
 
@@ -27,14 +27,13 @@ public class PersonDAO {
     }
 
     public void save(Person person){
-        jdbcTemplate.update("insert into person (name, age, email) values(?, ?, ?)", person.getName(), person.getAge(), person.getEmail());
+        jdbcTemplate.update("insert into person (fio, birth_year) values(?, ?)", person.getFio(), person.getBirthYear());
     }
 
     public void update(int id, Person updatedPerson){
-        jdbcTemplate.update("update person set name=?, age=?, email=? where id=?",
-                updatedPerson.getName(),
-                updatedPerson.getAge(),
-                updatedPerson.getEmail(),
+        jdbcTemplate.update("update person set fio=?, birth_year=? where id=?",
+                updatedPerson.getFio(),
+                updatedPerson.getBirthYear(),
                 id);
     }
 
