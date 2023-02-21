@@ -2,14 +2,11 @@ package spring.library.models;
 
 public class Book {
     private int id;
-    private int personId;
     private String name;
     private String author;
     private int bookYear;
 
-    public Book(int id, int personId, String author, int bookYear, String name) {
-        this.id = id;
-        this.personId = personId;
+    public Book(String author, int bookYear, String name) {
         this.author = author;
         this.bookYear = bookYear;
         this.name = name;
@@ -32,14 +29,6 @@ public class Book {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getPersonId() {
-        return personId;
-    }
-
-    public void setPersonId(int personId) {
-        this.personId = personId;
     }
 
     public String getAuthor() {
