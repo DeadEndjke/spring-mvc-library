@@ -5,8 +5,23 @@
     <title>person</title>
 </head>
 <body>
-<p th:text="${person.getFio()}">Value</p>
-<p th:text = "${person.getBirthYear()}">value</p>
+<p th:text="${person.getFio() + ', ' + person.getBirthYear()}">Value</p>
+
+<div th:if="${books.isEmpty()}">
+    <p>The man has not yet taken a single book</p>
+    <hr/>
+</div>
+
+<div th:if = "${!books.isEmpty()}">
+    <hr/>
+    <b>Books:</b>
+    <br/>
+    <table th:each="book : ${books}">
+        <tr th:text="${book.getName() + ', ' + book.getAuthor() + ', ' + book.getBookYear()}">book</tr>
+    </table>
+    <hr/>
+</div>
+
 <a th:href="@{/people/{id}/edit(id=${person.getId()})}">edit</a>
 <form th:method="DELETE" th:action="@{/people/{id}(id=${person.getId()})}">
     <input type="submit" value="Delete"/>
